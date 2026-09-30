@@ -1,0 +1,405 @@
+/* Smooth ABC card detail popup */
+.card-popup{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(8,6,12,.58);backdrop-filter:blur(14px) saturate(125%);-webkit-backdrop-filter:blur(14px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .34s ease,visibility .34s ease}
+.card-popup.active{opacity:1;visibility:visible;pointer-events:auto}
+.popup-content{position:relative;width:min(960px,94vw);max-height:min(760px,90vh);display:grid;grid-template-columns:minmax(300px,.9fr) minmax(320px,1.1fr);overflow:hidden;border:1px solid var(--border);border-radius:30px;background:color-mix(in srgb,var(--card) 92%,var(--bg));box-shadow:0 35px 100px rgba(0,0,0,.32),inset 0 1px 0 var(--glass-hi);transform:translateY(20px) scale(.94);transition:transform .42s cubic-bezier(.2,.8,.2,1)}
+.card-popup.active .popup-content{transform:none}
+.popup-content>img{width:100%;height:100%;min-height:360px;object-fit:cover;display:block;background:#221a21}
+.popup-text{padding:42px 42px 38px;display:flex;flex-direction:column;justify-content:center;min-width:0;overflow:auto}
+.popup-kicker{font-size:10px;letter-spacing:2px;color:var(--accent);font-weight:800}
+.popup-text h2{font-family:"DM Sans",sans-serif;font-size:clamp(30px,4vw,48px);line-height:1.05;letter-spacing:-1px;margin:10px 0 16px;color:var(--text)}
+.popup-text p{margin:0;color:var(--muted);font-size:14px;line-height:1.8;max-width:620px}
+.popup-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:max-content;margin-top:24px;padding:12px 20px;border-radius:999px;background:linear-gradient(135deg,var(--accent),#6e285d 70%,#4d244d);color:#fff;text-decoration:none;font-size:12px;font-weight:800;box-shadow:0 14px 34px color-mix(in srgb,var(--accent) 22%,transparent);transition:transform .25s ease,filter .25s ease}
+.popup-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.popup-close{position:absolute;right:14px;top:14px;width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:50%;background:rgba(10,8,13,.62);color:#fff;font-size:27px;line-height:1;cursor:pointer;z-index:3;backdrop-filter:blur(12px);transition:transform .2s ease,background .2s ease}
+.popup-close:hover{transform:rotate(6deg) scale(1.06);background:var(--accent)}
+.popup-card{cursor:pointer}
+@media(max-width:760px){.card-popup{padding:14px}.popup-content{width:100%;max-height:92vh;grid-template-columns:1fr;border-radius:25px}.popup-content>img{height:230px;min-height:230px}.popup-text{padding:27px 24px 25px}.popup-text h2{font-size:32px}.popup-text p{font-size:13px;line-height:1.7}.popup-btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.card-popup,.popup-content,.popup-btn,.popup-close{transition:none}}
+
+/* Smooth, age-friendly popup */
+.popup-content{transition:transform .48s cubic-bezier(.16,1,.3,1),opacity .3s ease}.card-popup{transition:opacity .28s ease,visibility .28s ease}.popup-text h2{font-family:"DM Sans",sans-serif;letter-spacing:-.6px}.popup-text p{font-family:"Nunito Sans","DM Sans",sans-serif;font-size:15px;line-height:1.75}.popup-btn{font-family:"DM Sans",sans-serif}.popup-close{transition:transform .25s ease,background .25s ease,box-shadow .25s ease}.popup-close:hover{box-shadow:0 0 20px color-mix(in srgb,var(--accent) 50%,transparent)}
+
+
+/* Popup-data: long course details scroll inside the popup */
+.popup-description{
+  max-height:min(52vh,420px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding:4px 14px 4px 0;
+  white-space:normal;
+  scrollbar-width:thin;
+  overscroll-behavior:contain;
+}
+.popup-description p{
+  margin:0;
+  white-space:pre-line;
+}
+.popup-description::-webkit-scrollbar{width:6px}
+.popup-description::-webkit-scrollbar-track{background:transparent}
+.popup-description::-webkit-scrollbar-thumb{
+  background:color-mix(in srgb,var(--accent) 55%,transparent);
+  border-radius:999px;
+}
+.popup-text{min-height:0}
+@media(max-width:760px){
+  .popup-description{max-height:38vh;padding-right:10px}
+}
+
+/* Popup image carousel */
+.popup-media{
+  position:relative;
+  min-width:0;
+  min-height:360px;
+  overflow:hidden;
+  background:#221a21;
+  isolation:isolate;
+}
+.popup-slides{
+  display:flex;
+  width:100%;
+  height:100%;
+  min-height:360px;
+  transition:transform .55s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
+}
+.popup-slide{
+  flex:0 0 100%;
+  width:100%;
+  height:100%;
+  min-height:360px;
+}
+.popup-slide img{
+  width:100%;
+  height:100%;
+  min-height:360px;
+  display:block;
+  object-fit:cover;
+  background:#221a21;
+}
+.popup-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:50%;
+  background:rgba(12,9,15,.58);
+  color:#fff;
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+  z-index:3;
+  backdrop-filter:blur(10px);
+  transition:transform .2s ease,background .2s ease;
+}
+.popup-nav:hover{background:var(--accent);transform:translateY(-50%) scale(1.07)}
+.popup-prev{left:16px}.popup-next{right:16px}
+.popup-dots{
+  position:absolute;
+  left:50%;
+  bottom:17px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:7px;
+  z-index:3;
+  padding:7px 10px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  background:rgba(10,8,13,.42);
+  backdrop-filter:blur(10px);
+}
+.popup-dot{
+  width:7px;
+  height:7px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.45);
+  cursor:pointer;
+  transition:width .25s ease,background .25s ease;
+}
+.popup-dot.active{width:22px;border-radius:999px;background:#fff}
+@media(max-width:760px){
+  .popup-media,.popup-slides,.popup-slide,.popup-slide img{min-height:230px;height:230px}
+  .popup-nav{width:38px;height:38px;font-size:19px}
+  .popup-prev{left:12px}.popup-next{right:12px}
+}
+@media(prefers-reduced-motion:reduce){.popup-slides{transition:none}.popup-nav,.popup-dot{transition:none}}
+
+/* Modern popup image slider: swipe + autoplay, no arrow controls */
+.popup-media{
+  touch-action:pan-y;
+  user-select:none;
+  -webkit-user-select:none;
+  cursor:grab;
+}
+.popup-media.is-dragging{cursor:grabbing}
+.popup-slides{
+  transform:translate3d(0,0,0);
+  will-change:transform;
+}
+.popup-slide{overflow:hidden}
+.popup-slide img{
+  user-select:none;
+  -webkit-user-drag:none;
+  pointer-events:none;
+}
+.popup-dots{
+  bottom:18px;
+  gap:6px;
+  padding:6px 9px;
+  background:rgba(12,9,15,.34);
+  border-color:rgba(255,255,255,.12);
+  box-shadow:0 8px 25px rgba(0,0,0,.18);
+}
+.popup-dot{
+  width:6px;
+  height:6px;
+  opacity:.7;
+  transition:all .35s cubic-bezier(.22,.61,.36,1);
+}
+.popup-dot.active{
+  width:24px;
+  opacity:1;
+}
+.popup-nav{display:none!important}
+@media(max-width:760px){
+  .popup-media{cursor:grab}
+  .popup-dots{bottom:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .popup-slides{transition:none!important}
+}
+
+
+/* Modern popup-data scroll indicator — no browser scrollbar */
+.popup-scroll-wrap{
+  position:relative;
+  min-height:0;
+  flex:1 1 auto;
+  overflow:hidden;
+}
+.popup-description{
+  max-height:min(52vh,420px);
+  height:100%;
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding:4px 10px 4px 0;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  overscroll-behavior:contain;
+  scroll-behavior:smooth;
+}
+.popup-description::-webkit-scrollbar{display:none;width:0;height:0}
+.popup-scroll-rail{
+  position:absolute;
+  top:5px;
+  right:1px;
+  width:5px;
+  height:calc(100% - 10px);
+  border-radius:999px;
+  background:rgba(255,255,255,.055);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease,background .25s ease;
+}
+.popup-scroll-rail.visible{
+  opacity:1;
+  pointer-events:auto;
+  cursor:pointer;
+}
+.popup-scroll-rail:hover{background:rgba(255,255,255,.10)}
+.popup-scroll-thumb{
+  position:absolute;
+  left:0;
+  top:0;
+  width:5px;
+  min-height:34px;
+  border-radius:999px;
+  background:linear-gradient(180deg,var(--accent),color-mix(in srgb,var(--accent) 55%,#fff));
+  box-shadow:0 0 12px color-mix(in srgb,var(--accent) 40%,transparent);
+  cursor:grab;
+  transition:filter .2s ease;
+}
+.popup-scroll-thumb:hover{filter:brightness(1.15)}
+.popup-scroll-thumb:active{cursor:grabbing}
+@media(max-width:760px){
+  .popup-description{max-height:38vh;padding-right:8px}
+  .popup-scroll-rail{width:4px;right:0}
+  .popup-scroll-thumb{width:4px}
+}
+@media(prefers-reduced-motion:reduce){.popup-description{scroll-behavior:auto}.popup-scroll-rail,.popup-scroll-thumb{transition:none}}
+
+
+/* =========================================================
+   FINAL POPUP CTA / MOBILE RESPONSIVE FIX
+   The details area scrolls independently so the CTA is ALWAYS visible.
+   ========================================================= */
+.popup-content{
+  grid-template-rows:minmax(0,1fr);
+}
+.popup-text{
+  display:grid;
+  grid-template-rows:auto auto minmax(0,1fr) auto;
+  align-content:stretch;
+  justify-content:stretch;
+  min-height:0;
+  overflow:hidden;
+  padding:clamp(24px,3.2vw,42px);
+}
+.popup-text h2{min-width:0;}
+.popup-scroll-wrap{
+  min-height:0;
+  height:auto;
+  overflow:hidden;
+  margin-top:2px;
+}
+.popup-description{
+  max-height:none;
+  height:100%;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding:4px 12px 4px 0;
+}
+.popup-btn{
+  position:relative;
+  z-index:4;
+  width:max-content;
+  max-width:100%;
+  margin-top:14px;
+  flex-shrink:0;
+  align-self:end;
+  justify-self:start;
+  white-space:normal;
+  text-align:center;
+}
+.popup-close{z-index:10;}
+
+@media(max-width:760px){
+  .card-popup{padding:10px;}
+  .popup-content{
+    width:100%;
+    max-height:calc(100dvh - 20px);
+    height:min(92dvh,760px);
+    grid-template-columns:1fr;
+    grid-template-rows:230px minmax(0,1fr);
+    border-radius:24px;
+  }
+  .popup-media,.popup-slides,.popup-slide,.popup-slide img{
+    min-height:0;
+    height:230px;
+  }
+  .popup-text{
+    min-height:0;
+    padding:18px 18px 16px;
+    grid-template-rows:auto auto minmax(0,1fr) auto;
+  }
+  .popup-text h2{
+    font-size:clamp(25px,7.5vw,32px);
+    line-height:1.06;
+    margin:7px 0 10px;
+  }
+  .popup-text p,.popup-description{
+    font-size:clamp(12px,3.5vw,14px);
+    line-height:1.6;
+  }
+  .popup-btn{
+    width:100%;
+    margin-top:10px;
+    padding:11px 16px;
+    font-size:12px;
+  }
+  .popup-scroll-wrap{margin-top:0;}
+  .popup-description{padding-right:8px;}
+}
+@media(max-width:380px){
+  .popup-content{grid-template-rows:200px minmax(0,1fr);}
+  .popup-media,.popup-slides,.popup-slide,.popup-slide img{height:200px;}
+  .popup-text{padding:15px 14px 13px;}
+  .popup-text h2{font-size:25px;}
+}
+
+
+/* =========================================================
+   START: MOBILE POPUP COMPACT FIX
+   Removes the large empty area above the CTA on phones.
+   ========================================================= */
+@media (max-width: 760px) {
+  .card-popup {
+    padding: 8px;
+    align-items: center;
+  }
+
+  .popup-content {
+    height: auto;
+    max-height: calc(100dvh - 16px);
+    grid-template-rows: 230px auto;
+  }
+
+  .popup-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    overflow: auto;
+    padding: 16px 16px 14px;
+  }
+
+  .popup-kicker {
+    flex: 0 0 auto;
+  }
+
+  .popup-text h2 {
+    flex: 0 0 auto;
+    margin: 6px 0 9px;
+  }
+
+  .popup-scroll-wrap {
+    flex: 0 1 auto;
+    height: auto;
+    max-height: 24vh;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .popup-description {
+    height: auto;
+    max-height: 24vh;
+    overflow-y: auto;
+    padding: 0 8px 0 0;
+  }
+
+  .popup-btn {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-top: 10px;
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 380px) {
+  .popup-content {
+    grid-template-rows: 200px auto;
+  }
+
+  .popup-media,
+  .popup-slides,
+  .popup-slide,
+  .popup-slide img {
+    height: 200px;
+  }
+
+  .popup-text {
+    padding: 14px 13px 12px;
+  }
+
+  .popup-scroll-wrap,
+  .popup-description {
+    max-height: 22vh;
+  }
+}
+/* =========================================================
+   END: MOBILE POPUP COMPACT FIX
+   ========================================================= */

@@ -1,0 +1,335 @@
+/* =========================================================
+   ABC ACADEMY — FINAL SMOOTH / COMPACT / RESPONSIVE POLISH
+   Loaded last on all three pages so the existing design stays intact.
+   ========================================================= */
+
+:root {
+  --text: #000000;
+  --muted: #000000;
+  --accent: #9a3f7e;
+  --accent2: #9a3f7e;
+}
+
+:root[data-theme="dark"] {
+  --accent: #9a3f7e;
+  --accent2: #9a3f7e;
+}
+
+html {
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 92px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-width: 0;
+  overflow-x: hidden !important;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button {
+  touch-action: manipulation;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+section[id] {
+  scroll-margin-top: 92px;
+}
+
+/* Keep the page compact without removing breathing room. */
+.section {
+  padding-block: clamp(44px, 5vw, 64px) !important;
+}
+
+.section-head {
+  margin-bottom: clamp(18px, 2.2vw, 26px) !important;
+}
+
+.hero,
+.edu-hero,
+.interest-hero {
+  min-height: auto !important;
+  padding-top: clamp(28px, 4vw, 52px) !important;
+  padding-bottom: clamp(32px, 4vw, 54px) !important;
+  gap: clamp(26px, 4.5vw, 58px) !important;
+}
+
+.service-grid,
+.course-grid,
+.choice-grid,
+.start-paths-grid,
+.gallery-grid {
+  gap: 14px !important;
+}
+
+.about,
+.contact,
+.why {
+  gap: clamp(26px, 4vw, 48px) !important;
+}
+
+.form-card {
+  padding: clamp(24px, 3.2vw, 40px) !important;
+  gap: clamp(24px, 4vw, 44px) !important;
+}
+
+.contact {
+  padding-bottom: 54px !important;
+}
+
+.map-wrap {
+  height: 280px !important;
+}
+
+.ticker {
+  padding-block: 12px !important;
+}
+
+/* Light mode: normal copy is black. Accent remains exactly #9a3f7e. */
+:root:not([data-theme="dark"]) .video-sample-section,
+:root:not([data-theme="dark"]) .video-section-header,
+:root:not([data-theme="dark"]) .video-section-header h2,
+:root:not([data-theme="dark"]) .video-section-header p {
+  color: #000000 !important;
+}
+
+.video-section-header .eyebrow,
+.video-section-header h2 em {
+  color: #9a3f7e !important;
+}
+
+.video-section-header p {
+  color: var(--muted) !important;
+}
+
+.typing-text {
+  color: var(--accent) !important;
+}
+
+/* Accent headings/labels requested by the design. */
+.eyebrow,
+.eyebrow2,
+.section .eyebrow,
+.process .eyebrow,
+.edu-hero .eyebrow,
+#courses .eyebrow,
+#alumni .eyebrow,
+#video-sample .eyebrow,
+.service-body > span,
+.course-body > span,
+.choice-body > span,
+.choice-body strong {
+  color: #9a3f7e !important;
+}
+
+/* Remove accidental browser blue selection/tap flashes. */
+::selection {
+  background: rgba(154, 63, 126, .18);
+  color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #9a3f7e;
+  outline-offset: 3px;
+}
+
+/* Prevent oversized typography from creating horizontal overflow. */
+.hero h1,
+.edu-copy h1,
+.interest-copy h1,
+.section h2,
+.form-copy h2 {
+  overflow-wrap: anywhere;
+}
+
+/* Keep cards and media inside the viewport on every device. */
+.service-card,
+.course-card,
+.choice-card,
+.glass,
+.form-card,
+.inquiry-card,
+.map-section,
+.contact,
+.gallery-grid,
+.video-sample-section {
+  max-width: 100%;
+}
+
+/* Make mobile spacing intentionally tighter and more consistent. */
+@media (max-width: 900px) {
+  html {
+    scroll-padding-top: 82px;
+  }
+
+  section[id] {
+    scroll-margin-top: 82px;
+  }
+
+  .section {
+    width: min(100% - 24px, 1180px) !important;
+  }
+
+  .hero,
+  .edu-hero,
+  .interest-hero {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .hero-copy,
+  .edu-copy,
+  .interest-copy {
+    min-width: 0;
+  }
+
+  .hero-visual,
+  .edu-hero-card,
+  .interest-carousel {
+    width: min(100%, 620px);
+    margin-inline: auto;
+  }
+
+  .about,
+  .contact,
+  .why {
+    grid-template-columns: 1fr !important;
+  }
+
+  .form-card {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    scroll-padding-top: 76px;
+  }
+
+  section[id] {
+    scroll-margin-top: 76px;
+  }
+
+  .section {
+    width: calc(100% - 20px) !important;
+    padding-block: 36px !important;
+  }
+
+  .section-head {
+    gap: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero,
+  .edu-hero,
+  .interest-hero {
+    padding-top: 22px !important;
+    padding-bottom: 30px !important;
+    gap: 22px !important;
+  }
+
+  .hero h1,
+  .edu-copy h1,
+  .interest-copy h1 {
+    letter-spacing: -1.8px;
+  }
+
+  .actions,
+  .edu-actions,
+  .interest-actions {
+    gap: 10px !important;
+  }
+
+  .stats,
+  .edu-stats {
+    gap: 14px !important;
+    margin-top: 28px !important;
+    flex-wrap: wrap;
+  }
+
+  .stats div,
+  .edu-stats div {
+    padding-right: 14px !important;
+  }
+
+  .service-grid,
+  .course-grid,
+  .choice-grid,
+  .start-paths-grid,
+  .gallery-grid {
+    gap: 10px !important;
+  }
+
+  .form-card {
+    padding: 22px 18px !important;
+    border-radius: 24px !important;
+  }
+
+  .map-wrap {
+    height: 250px !important;
+    border-radius: 18px !important;
+  }
+
+  .video-sample-section {
+    padding: 34px 10px 36px !important;
+  }
+
+  .video-section-header {
+    margin-bottom: 18px !important;
+  }
+
+  /* Keep the mobile video cards large enough to read/use. */
+  .video-card {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .section {
+    width: calc(100% - 16px) !important;
+  }
+
+  .form-card {
+    padding: 18px 14px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
