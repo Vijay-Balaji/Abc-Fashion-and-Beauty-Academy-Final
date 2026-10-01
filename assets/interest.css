@@ -584,3 +584,404 @@
   }
 }
 
+
+/* =========================================
+   INTEREST CAROUSEL
+   Full Image + Swipe + Smooth Scroll
+   ========================================= */
+
+.interest-carousel {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+/* =========================================
+   SLIDES CONTAINER
+   ========================================= */
+
+.interest-slides {
+    display: flex;
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    user-select: none;
+    touch-action: pan-x;
+
+    padding: 0;
+    margin: 0;
+}
+
+.interest-slides::-webkit-scrollbar {
+    display: none;
+}
+
+/* =========================================
+   INDIVIDUAL SLIDE
+   ========================================= */
+
+.interest-slide {
+    position: relative;
+
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+
+    margin: 0;
+
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: transparent;
+}
+
+/* =========================================
+   IMAGE
+   FULL IMAGE VISIBLE
+   ========================================= */
+
+.interest-slide img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-height: 420px;
+
+    object-fit: contain;
+    object-position: center;
+
+    margin: 0 auto;
+
+    -webkit-user-drag: none;
+    user-select: none;
+
+    pointer-events: none;
+
+    transition: transform 0.45s ease;
+}
+
+/* =========================================
+   ACTIVE IMAGE
+   ========================================= */
+
+.interest-slide.active img {
+    transform: scale(1.01);
+}
+
+/* =========================================
+   CAPTION
+   ========================================= */
+
+.interest-slide figcaption {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding: 45px 22px 20px;
+
+    color: #fff;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.78) 0%,
+        rgba(0, 0, 0, 0.45) 45%,
+        rgba(0, 0, 0, 0) 100%
+    );
+
+    pointer-events: none;
+}
+
+/* Title */
+
+.interest-slide figcaption b {
+    display: block;
+
+    font-size: 1.2rem;
+    line-height: 1.25;
+
+    font-weight: 700;
+
+    color: #fff;
+}
+
+/* Description */
+
+.interest-slide figcaption span {
+    display: block;
+
+    font-size: 0.9rem;
+    line-height: 1.4;
+
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* =========================================
+   DOTS
+   ========================================= */
+
+.interest-dots {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 7px;
+
+    width: 100%;
+
+    padding: 14px 0 5px;
+}
+
+/* Dot buttons */
+
+.interest-dots button {
+    display: block;
+
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+    margin: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: currentColor;
+
+    opacity: 0.3;
+
+    cursor: pointer;
+
+    transition:
+        width 0.3s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* Active dot */
+
+.interest-dots button.active {
+    width: 22px;
+
+    border-radius: 10px;
+
+    opacity: 1;
+
+    transform: scale(1.05);
+}
+
+/* =========================================
+   SWIPE CURSOR — DESKTOP
+   ========================================= */
+
+.interest-slides {
+    cursor: grab;
+}
+
+.interest-slides:active {
+    cursor: grabbing;
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .interest-carousel {
+        border-radius: 20px;
+    }
+
+    .interest-slide {
+        border-radius: 18px;
+    }
+
+    .interest-slide img {
+        max-height: 400px;
+    }
+
+    .interest-slide figcaption {
+        padding: 42px 20px 18px;
+    }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .interest-carousel {
+        width: 100%;
+        border-radius: 18px;
+    }
+
+    .interest-slides {
+        width: 100%;
+
+        scroll-snap-type: x mandatory;
+
+        overscroll-behavior-x: contain;
+
+        touch-action: pan-x;
+    }
+
+    .interest-slide {
+        flex: 0 0 100%;
+        width: 100%;
+        min-width: 100%;
+
+        border-radius: 18px;
+    }
+
+    /* Full image — no cropping */
+
+    .interest-slide img {
+        width: 100%;
+        height: auto;
+
+        max-height: 360px;
+
+        object-fit: contain;
+        object-position: center;
+
+        margin: 0 auto;
+    }
+
+    /* Caption */
+
+    .interest-slide figcaption {
+        padding: 50px 18px 17px;
+
+        gap: 4px;
+    }
+
+    .interest-slide figcaption b {
+        font-size: 1.05rem;
+        line-height: 1.25;
+    }
+
+    .interest-slide figcaption span {
+        font-size: 0.82rem;
+        line-height: 1.35;
+    }
+
+    /* Dots */
+
+    .interest-dots {
+        gap: 6px;
+        padding: 12px 0 4px;
+    }
+
+    .interest-dots button {
+        width: 6px;
+        height: 6px;
+    }
+
+    .interest-dots button.active {
+        width: 20px;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    .interest-carousel {
+        border-radius: 16px;
+    }
+
+    .interest-slide {
+        border-radius: 16px;
+    }
+
+    .interest-slide img {
+        width: 100%;
+        height: auto;
+
+        max-height: 320px;
+
+        object-fit: contain;
+    }
+
+    .interest-slide figcaption {
+        padding: 45px 15px 15px;
+    }
+
+    .interest-slide figcaption b {
+        font-size: 1rem;
+    }
+
+    .interest-slide figcaption span {
+        font-size: 0.78rem;
+    }
+}
+
+/* =========================================
+   VERY SMALL PHONES
+   ========================================= */
+
+@media (max-width: 360px) {
+
+    .interest-slide img {
+        max-height: 290px;
+    }
+
+    .interest-slide figcaption {
+        padding: 40px 13px 13px;
+    }
+
+    .interest-slide figcaption b {
+        font-size: 0.95rem;
+    }
+
+    .interest-slide figcaption span {
+        font-size: 0.75rem;
+    }
+}
+
+/* =========================================
+   REDUCE MOTION ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .interest-slides {
+        scroll-behavior: auto;
+    }
+
+    .interest-slide img {
+        transition: none;
+    }
+
+    .interest-dots button {
+        transition: none;
+    }
+}
