@@ -753,7 +753,317 @@
 
         (function () { const cards = document.querySelectorAll('.scroll-card'); if (!cards.length) return; const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('scroll-visible'); io.unobserve(e.target) } }), { threshold: .12, rootMargin: '0px 0px -30px 0px' }); cards.forEach(c => io.observe(c)); })();
     </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+  const slider = document.getElementById("heroSlider");
+
+  if (!slider) return;
+
+  const track = slider.querySelector(".hero-slider-track");
+  const slides = [...slider.querySelectorAll(".hero-slide")];
+  const dotsContainer = slider.querySelector(".hero-slider-dots");
+
+  const totalSlides = slides.length;
+
+  let currentIndex = 0;
+
+  let startX = 0;
+  let startY = 0;
+
+  let isDragging = false;
+  let isHovering = false;
+
+  let autoPlayTimer = null;
+
+  const SWIPE_THRESHOLD = 50;
+  const AUTO_PLAY_TIME = 4500;
+
+
+  /* =========================================
+     CREATE DOTS
+  ========================================= */
+
+  slides.forEach((slide, index) => {
+
+    const dot = document.createElement("button");
+
+    dot.type = "button";
+    dot.className = "hero-slider-dot";
+
+    dot.setAttribute(
+      "aria-label",
+      `Go to slide ${index + 1}`
+    );
+
+    dot.addEventListener("click", () => {
+
+      goToSlide(index);
+
+      restartAutoPlay();
+
+    });
+
+    dotsContainer.appendChild(dot);
+
+  });
+
+
+  const dots = [
+    ...dotsContainer.querySelectorAll(".hero-slider-dot")
+  ];
+
+
+  /* =========================================
+     UPDATE SLIDE
+  ========================================= */
+
+  function updateSlider() {
+
+    track.style.transform =
+      `translate3d(-${currentIndex * 100}%, 0, 0)`;
+
+
+    slides.forEach((slide, index) => {
+
+      slide.classList.toggle(
+        "active",
+        index === currentIndex
+      );
+
+    });
+
+
+    dots.forEach((dot, index) => {
+
+      dot.classList.toggle(
+        "active",
+        index === currentIndex
+      );
+
+    });
+
+  }
+
+
+  /* =========================================
+     GO TO SLIDE
+  ========================================= */
+
+  function goToSlide(index) {
+
+    currentIndex =
+      (index + totalSlides) % totalSlides;
+
+    updateSlider();
+
+  }
+
+
+  /* =========================================
+     NEXT
+  ========================================= */
+
+  function nextSlide() {
+
+    goToSlide(currentIndex + 1);
+
+  }
+
+
+  /* =========================================
+     PREVIOUS
+  ========================================= */
+
+  function previousSlide() {
+
+    goToSlide(currentIndex - 1);
+
+  }
+
+
+  /* =========================================
+     AUTOPLAY
+  ========================================= */
+
+  function startAutoPlay() {
+
+    clearInterval(autoPlayTimer);
+
+    if (
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches
+    ) {
+      return;
+    }
+
+    autoPlayTimer = setInterval(() => {
+
+      if (!isHovering && !isDragging) {
+
+        nextSlide();
+
+      }
+
+    }, AUTO_PLAY_TIME);
+
+  }
+
+
+  function stopAutoPlay() {
+
+    clearInterval(autoPlayTimer);
+
+  }
+
+
+  function restartAutoPlay() {
+
+    stopAutoPlay();
+
+    startAutoPlay();
+
+  }
+
+
+  /* =========================================
+     MOUSE / TOUCH / PEN SWIPE
+  ========================================= */
+
+  slider.addEventListener("pointerdown", (event) => {
+
+    if (!event.isPrimary) return;
+
+    isDragging = true;
+
+    startX = event.clientX;
+    startY = event.clientY;
+
+    stopAutoPlay();
+
+    slider.setPointerCapture(event.pointerId);
+
+  });
+
+
+  slider.addEventListener("pointerup", (event) => {
+
+    if (!isDragging) return;
+
+    isDragging = false;
+
+    const deltaX =
+      event.clientX - startX;
+
+    const deltaY =
+      event.clientY - startY;
+
+
+    /* Only treat mostly-horizontal gestures
+       as a swipe */
+
+    if (
+      Math.abs(deltaX) > Math.abs(deltaY) &&
+      Math.abs(deltaX) >= SWIPE_THRESHOLD
+    ) {
+
+      if (deltaX < 0) {
+
+        nextSlide();
+
+      } else {
+
+        previousSlide();
+
+      }
+
+    }
+
+
+    restartAutoPlay();
+
+  });
+
+
+  /* Cancelled pointer */
+
+  slider.addEventListener(
+    "pointercancel",
+    () => {
+
+      isDragging = false;
+
+      restartAutoPlay();
+
+    }
+  );
+
+
+  /* =========================================
+     DESKTOP HOVER PAUSE
+  ========================================= */
+
+  slider.addEventListener(
+    "pointerenter",
+    () => {
+
+      isHovering = true;
+
+      stopAutoPlay();
+
+    }
+  );
+
+
+  slider.addEventListener(
+    "pointerleave",
+    () => {
+
+      isHovering = false;
+
+      if (!isDragging) {
+
+        startAutoPlay();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================
+     INITIAL STATE
+  ========================================= */
+
+  updateSlider();
+
+  startAutoPlay();
+
+
+  /* =========================================
+     PAUSE WHEN TAB IS HIDDEN
+  ========================================= */
+
+  document.addEventListener(
+    "visibilitychange",
+    () => {
+
+      if (document.hidden) {
+
+        stopAutoPlay();
+
+      } else {
+
+        startAutoPlay();
+
+      }
+
+    }
+  );
+
+});
+</script>
 </body>
 
 </html>
