@@ -1305,3 +1305,474 @@
   }
   .video-card video { object-fit: cover !important; }
 }
+
+
+
+/* =====================================================
+   STUDENT JOURNEY
+===================================================== */
+
+.student-journey {
+  --journey-text: rgba(245, 238, 245, .72);
+  --journey-title: #e7a4cf;
+  --journey-border: rgba(231, 164, 207, .20);
+  --journey-bg: rgba(255, 255, 255, .025);
+  --journey-arrow: rgba(231, 164, 207, .42);
+
+  --journey-active-text: #ffffff;
+  --journey-active-border: rgba(231, 164, 207, .65);
+  --journey-active-bg: rgba(231, 164, 207, .09);
+
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  padding: 35px 20px 45px;
+
+  text-align: center;
+  overflow: hidden;
+}
+
+
+/* TITLE */
+
+.journey-title {
+  margin-bottom: 20px;
+
+  color: var(--journey-title);
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+
+/* FLOW */
+
+.journey-flow {
+  width: 100%;
+  max-width: 1450px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+
+/* STEP */
+
+.journey-step {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+}
+
+
+/* STEP PILL */
+
+.journey-step span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 36px;
+
+  padding: 8px 15px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--journey-border);
+  border-radius: 999px;
+
+  background: var(--journey-bg);
+
+  color: var(--journey-text);
+
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  transition:
+    color .35s ease,
+    border-color .35s ease,
+    background .35s ease,
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+
+/* ARROW */
+
+.journey-step b {
+  color: var(--journey-arrow);
+
+  font-size: 13px;
+  font-weight: 400;
+
+  animation: journeyArrow 2s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   STEP ANIMATION
+===================================================== */
+
+.journey-step:nth-child(1) span {
+  animation: journeyHighlight 6s ease-in-out infinite 0s;
+}
+
+.journey-step:nth-child(2) span {
+  animation: journeyHighlight 6s ease-in-out infinite .7s;
+}
+
+.journey-step:nth-child(3) span {
+  animation: journeyHighlight 6s ease-in-out infinite 1.4s;
+}
+
+.journey-step:nth-child(4) span {
+  animation: journeyHighlight 6s ease-in-out infinite 2.1s;
+}
+
+.journey-step:nth-child(5) span {
+  animation: journeyHighlight 6s ease-in-out infinite 2.8s;
+}
+
+.journey-step:nth-child(6) span {
+  animation: journeyHighlight 6s ease-in-out infinite 3.5s;
+}
+
+
+@keyframes journeyHighlight {
+
+  0%,
+  100% {
+    color: var(--journey-text);
+    border-color: var(--journey-border);
+    background: var(--journey-bg);
+    box-shadow: none;
+    transform: translateY(0);
+  }
+
+  8%,
+  18% {
+    color: var(--journey-active-text);
+    border-color: var(--journey-active-border);
+    background: var(--journey-active-bg);
+
+    box-shadow:
+      0 0 18px rgba(231, 164, 207, .13);
+
+    transform: translateY(-2px);
+  }
+
+  25% {
+    color: var(--journey-text);
+    border-color: var(--journey-border);
+    background: var(--journey-bg);
+    box-shadow: none;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes journeyArrow {
+
+  0%,
+  100% {
+    opacity: .35;
+    transform: translateX(0);
+  }
+
+  50% {
+    opacity: .9;
+    transform: translateX(3px);
+  }
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.journey-step span:hover {
+  color: var(--journey-active-text);
+
+  border-color:
+    var(--journey-active-border);
+
+  background:
+    var(--journey-active-bg);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 18px rgba(231, 164, 207, .12);
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+body.dark-mode .student-journey {
+
+  --journey-text: rgba(245, 238, 245, .72);
+  --journey-title: #e7a4cf;
+
+  --journey-border:
+    rgba(231, 164, 207, .20);
+
+  --journey-bg:
+    rgba(255, 255, 255, .025);
+
+  --journey-arrow:
+    rgba(231, 164, 207, .42);
+
+  --journey-active-text:
+    #ffffff;
+
+  --journey-active-border:
+    rgba(231, 164, 207, .65);
+
+  --journey-active-bg:
+    rgba(231, 164, 207, .09);
+}
+
+
+/* =====================================================
+   LIGHT MODE
+===================================================== */
+
+body.light-mode .student-journey {
+
+  --journey-text:
+    rgba(55, 42, 53, .72);
+
+  --journey-title:
+    #a94d91;
+
+  --journey-border:
+    rgba(169, 77, 145, .22);
+
+  --journey-bg:
+    rgba(169, 77, 145, .045);
+
+  --journey-arrow:
+    rgba(169, 77, 145, .48);
+
+  --journey-active-text:
+    #43273d;
+
+  --journey-active-border:
+    rgba(169, 77, 145, .48);
+
+  --journey-active-bg:
+    rgba(169, 77, 145, .09);
+}
+
+
+/* =====================================================
+   DESKTOP
+===================================================== */
+
+@media (min-width: 1200px) {
+
+  .journey-flow {
+    gap: 14px;
+  }
+
+  .journey-step {
+    gap: 14px;
+  }
+
+  .journey-step span {
+    padding: 9px 17px;
+    font-size: 11px;
+  }
+}
+
+
+/* =====================================================
+   LAPTOP
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .journey-flow {
+    gap: 9px 10px;
+  }
+
+  .journey-step {
+    gap: 9px;
+  }
+
+  .journey-step span {
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 850px) {
+
+  .journey-flow {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .journey-step {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .journey-step span {
+    width: 100%;
+
+    min-width: 0;
+
+    white-space: normal;
+
+    text-align: center;
+
+    padding: 9px 7px;
+
+    font-size: 10px;
+  }
+
+  .journey-step b {
+    display: none;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .student-journey {
+    padding: 25px 14px 35px;
+  }
+
+  .journey-title {
+    margin-bottom: 17px;
+    font-size: 11px;
+  }
+
+  .journey-flow {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 9px 7px;
+  }
+
+  .journey-step {
+    width: 100%;
+    gap: 0;
+  }
+
+  .journey-step span {
+    width: 100%;
+
+    min-height: 34px;
+
+    padding: 7px 5px;
+
+    font-size: 9px;
+
+    white-space: normal;
+
+    line-height: 1.25;
+  }
+
+  .journey-step b {
+    display: none;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 380px) {
+
+  .student-journey {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .journey-title {
+    font-size: 10px;
+  }
+
+  .journey-flow {
+    gap: 7px 5px;
+  }
+
+  .journey-step span {
+    min-height: 32px;
+
+    padding: 6px 4px;
+
+    font-size: 8px;
+  }
+}
+
+
+/* =====================================================
+   VERY SMALL SCREEN
+===================================================== */
+
+@media (max-width: 320px) {
+
+  .journey-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-step span {
+    width: auto;
+    min-width: 150px;
+    margin: auto;
+  }
+}
+
+
+/* =====================================================
+   REDUCE MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .journey-step span,
+  .journey-step b {
+    animation: none !important;
+    transition: none !important;
+  }
+}
