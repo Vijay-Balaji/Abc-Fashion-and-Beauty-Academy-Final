@@ -5735,37 +5735,17 @@ video {
 
 
 
-
-
 /* ==========================================
-   ABC — WHY CHOOSE ABC
-   EDUCATION PAGE STYLE
+   ABC — WHY ABC ACADEMY
+   CLEAN EDITORIAL STYLE
    ========================================== */
 
 .abc-why-section {
   width: 100%;
+  padding: 105px 7%;
   position: relative;
-  padding: 110px 7%;
-
-  background:
-    radial-gradient(
-      circle at 10% 50%,
-      rgba(161, 70, 142, 0.08),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 90% 30%,
-      rgba(255, 104, 75, 0.05),
-      transparent 30%
-    );
-
   overflow: hidden;
 }
-
-
-/* ==========================================
-   MAIN CONTAINER
-   ========================================== */
 
 .abc-why-inner {
   width: min(1180px, 100%);
@@ -5778,151 +5758,67 @@ video {
    ========================================== */
 
 .abc-why-heading {
-  max-width: 760px;
+  max-width: 850px;
 }
 
-
-/* SMALL TOP LABEL
-   Same style direction as
-   ABC · POLLACHI / WHY ABC ACADEMY
-*/
-
 .abc-why-kicker {
-
   margin-bottom: 18px;
 
   font-size: 11px;
-  font-weight: 700;
-
+  font-weight: 800;
   letter-spacing: 4px;
-
   text-transform: uppercase;
 
   color: #a4478d;
 }
 
-
-/* MAIN HEADING */
-
 .abc-why-heading h2 {
-
   margin: 0;
 
-  font-size: clamp(
-    42px,
-    6vw,
-    76px
-  );
-
+  font-size: clamp(46px, 6vw, 76px);
   line-height: 0.98;
-
   letter-spacing: -3px;
+  font-weight: 800;
 
-  font-weight: 700;
-
-  color: var(--text-color, #f4edf5);
+  color: var(--text-color, #242026);
 }
-
-
-/* ACCENT LINE */
 
 .abc-why-heading h2 span {
-
   color: #a4478d;
-
   font-style: italic;
-
-  font-weight: 500;
-}
-
-
-/* DESCRIPTION */
-
-.abc-why-heading p {
-
-  max-width: 700px;
-
-  margin-top: 30px;
-
-  font-size: 15px;
-
-  line-height: 1.8;
-
-  color: var(
-    --muted-color,
-    #aaa2ae
-  );
+  font-weight: 600;
 }
 
 
 /* ==========================================
-   FEATURES GRID
+   STAR POINTS
    ========================================== */
 
-.abc-why-features {
-
+.abc-why-points {
   margin-top: 55px;
 
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+  column-gap: 80px;
+  row-gap: 24px;
 
-  gap: 14px;
-
-  max-width: 1050px;
+  max-width: 1000px;
 }
 
-
-/* ==========================================
-   FEATURE
-   ========================================== */
-
-.abc-why-item {
-
-  min-height: 70px;
-
-  padding: 17px 20px;
-
+.abc-why-point {
   display: flex;
-
   align-items: center;
 
-  gap: 14px;
+  gap: 15px;
 
-  border: 1px solid
-    rgba(164, 71, 141, 0.16);
+  min-height: 42px;
 
-  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
 
-  background:
-    rgba(164, 71, 141, 0.035);
-
-  color:
-    var(--text-color, #f4edf5);
-
-  font-size: 14px;
-
-  line-height: 1.4;
-
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    background 0.3s ease;
-}
-
-
-/* HOVER */
-
-.abc-why-item:hover {
-
-  transform: translateY(-3px);
-
-  border-color:
-    rgba(164, 71, 141, 0.35);
-
-  background:
-    rgba(164, 71, 141, 0.07);
+  color: var(--text-color, #242026);
 }
 
 
@@ -5931,108 +5827,68 @@ video {
    ========================================== */
 
 .abc-why-star {
+  width: 25px;
+  height: 25px;
 
-  width: 27px;
-  height: 27px;
-
-  flex: 0 0 27px;
+  flex: 0 0 25px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
   color: #a4478d;
 
-  font-size: 20px;
+  font-size: 19px;
+  line-height: 1;
 
-  animation:
-    abcWhyStarRotate
-    4s linear infinite;
+  animation: abcWhyStarRotate 4s linear infinite;
 }
-
-
-/* STAR ROTATION */
 
 @keyframes abcWhyStarRotate {
 
   0% {
-    transform:
-      rotate(0deg)
-      scale(1);
+    transform: rotate(0deg) scale(1);
   }
 
   50% {
-    transform:
-      rotate(180deg)
-      scale(1.12);
+    transform: rotate(180deg) scale(1.12);
   }
 
   100% {
-    transform:
-      rotate(360deg)
-      scale(1);
+    transform: rotate(360deg) scale(1);
   }
 
 }
 
 
-/* Different starting positions */
+/* Stagger the stars */
 
-.abc-why-item:nth-child(2)
-.abc-why-star {
+.abc-why-point:nth-child(2) .abc-why-star {
   animation-delay: -0.5s;
 }
 
-.abc-why-item:nth-child(3)
-.abc-why-star {
+.abc-why-point:nth-child(3) .abc-why-star {
   animation-delay: -1s;
 }
 
-.abc-why-item:nth-child(4)
-.abc-why-star {
+.abc-why-point:nth-child(4) .abc-why-star {
   animation-delay: -1.5s;
 }
 
-.abc-why-item:nth-child(5)
-.abc-why-star {
+.abc-why-point:nth-child(5) .abc-why-star {
   animation-delay: -2s;
 }
 
-.abc-why-item:nth-child(6)
-.abc-why-star {
+.abc-why-point:nth-child(6) .abc-why-star {
   animation-delay: -2.5s;
 }
 
-.abc-why-item:nth-child(7)
-.abc-why-star {
+.abc-why-point:nth-child(7) .abc-why-star {
   animation-delay: -3s;
 }
 
-.abc-why-item:nth-child(8)
-.abc-why-star {
+.abc-why-point:nth-child(8) .abc-why-star {
   animation-delay: -3.5s;
-}
-
-
-/* ==========================================
-   LIGHT MODE
-   ========================================== */
-
-body.light .abc-why-section,
-[data-theme="light"] .abc-why-section {
-
-  --text-color: #242026;
-
-  --muted-color: #6e6670;
-
-  background:
-    radial-gradient(
-      circle at 10% 50%,
-      rgba(164, 71, 141, 0.07),
-      transparent 34%
-    ),
-    #faf7fb;
 }
 
 
@@ -6040,13 +5896,23 @@ body.light .abc-why-section,
    DARK MODE
    ========================================== */
 
-body.dark .abc-why-section,
-[data-theme="dark"] .abc-why-section {
-
+body.dark .abc-why-heading h2,
+body.dark .abc-why-point,
+[data-theme="dark"] .abc-why-heading h2,
+[data-theme="dark"] .abc-why-point {
   --text-color: #f4edf5;
+}
 
-  --muted-color: #aaa2ae;
 
+/* ==========================================
+   LIGHT MODE
+   ========================================== */
+
+body.light .abc-why-heading h2,
+body.light .abc-why-point,
+[data-theme="light"] .abc-why-heading h2,
+[data-theme="light"] .abc-why-point {
+  --text-color: #242026;
 }
 
 
@@ -6057,16 +5923,16 @@ body.dark .abc-why-section,
 @media (max-width: 900px) {
 
   .abc-why-section {
-
     padding: 85px 6%;
-
   }
 
   .abc-why-heading h2 {
+    font-size: clamp(44px, 7vw, 62px);
+  }
 
-    font-size:
-      clamp(42px, 7vw, 62px);
-
+  .abc-why-points {
+    column-gap: 45px;
+    row-gap: 20px;
   }
 
 }
@@ -6079,109 +5945,68 @@ body.dark .abc-why-section,
 @media (max-width: 600px) {
 
   .abc-why-section {
-
     padding: 70px 20px;
-
   }
-
 
   .abc-why-kicker {
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
     margin-bottom: 15px;
 
+    font-size: 9px;
+    letter-spacing: 3px;
   }
-
 
   .abc-why-heading h2 {
-
-    font-size:
-      clamp(38px, 11vw, 52px);
+    font-size: clamp(38px, 11vw, 52px);
 
     line-height: 1;
-
     letter-spacing: -2px;
-
   }
 
-
-  .abc-why-heading p {
-
-    margin-top: 22px;
-
-    font-size: 14px;
-
-    line-height: 1.75;
-
-  }
-
-
-  .abc-why-features {
-
-    margin-top: 38px;
+  .abc-why-points {
+    margin-top: 40px;
 
     grid-template-columns: 1fr;
 
-    gap: 10px;
-
+    gap: 18px;
   }
 
+  .abc-why-point {
+    min-height: 34px;
 
-  .abc-why-item {
+    gap: 13px;
 
-    min-height: 62px;
-
-    padding: 15px 16px;
-
-    border-radius: 14px;
-
-    font-size: 13.5px;
-
+    font-size: 14px;
+    font-weight: 700;
   }
-
 
   .abc-why-star {
+    width: 23px;
+    height: 23px;
 
-    width: 25px;
+    flex-basis: 23px;
 
-    height: 25px;
-
-    flex-basis: 25px;
-
-    font-size: 18px;
-
+    font-size: 17px;
   }
 
 }
 
 
 /* ==========================================
-   SMALL PHONES
+   SMALL MOBILE
    ========================================== */
 
 @media (max-width: 380px) {
 
   .abc-why-section {
-
     padding: 60px 16px;
-
   }
-
 
   .abc-why-heading h2 {
-
     font-size: 35px;
-
   }
 
-
-  .abc-why-item {
-
+  .abc-why-point {
     font-size: 13px;
-
   }
 
 }
@@ -6194,15 +6019,7 @@ body.dark .abc-why-section,
 @media (prefers-reduced-motion: reduce) {
 
   .abc-why-star {
-
     animation: none;
-
-  }
-
-  .abc-why-item {
-
-    transition: none;
-
   }
 
 }
