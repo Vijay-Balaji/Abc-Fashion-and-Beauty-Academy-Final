@@ -1307,4 +1307,486 @@
 }
 
 
+/* =========================================
+   ABC ACADEMY — WHY ABC SECTION
+   ========================================= */
 
+.abc-practical-section {
+  width: 100%;
+  padding: 100px 7%;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 50%,
+      rgba(150, 62, 132, 0.10),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(255, 104, 75, 0.07),
+      transparent 30%
+    ),
+    var(--abc-bg, #0d0c12);
+
+  color: var(--abc-text, #f2edf5);
+
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+
+/* =========================================
+   DARK MODE
+   ========================================= */
+
+body.dark .abc-practical-section,
+[data-theme="dark"] .abc-practical-section {
+
+  --abc-bg: #0d0c12;
+  --abc-text: #f2edf5;
+  --abc-muted: #aaa2ae;
+  --abc-card: rgba(255, 255, 255, 0.035);
+  --abc-border: rgba(255, 255, 255, 0.09);
+  --abc-accent: #c05aa5;
+
+}
+
+
+/* =========================================
+   LIGHT MODE
+   ========================================= */
+
+body.light .abc-practical-section,
+[data-theme="light"] .abc-practical-section {
+
+  --abc-bg: #faf7fb;
+  --abc-text: #29232d;
+  --abc-muted: #6d6570;
+  --abc-card: rgba(255, 255, 255, 0.72);
+  --abc-border: rgba(120, 70, 115, 0.15);
+  --abc-accent: #a4478d;
+
+}
+
+
+/* =========================================
+   DEFAULT VARIABLES
+   ========================================= */
+
+.abc-practical-section {
+
+  --abc-muted: #aaa2ae;
+  --abc-card: rgba(255, 255, 255, 0.035);
+  --abc-border: rgba(255, 255, 255, 0.09);
+  --abc-accent: #c05aa5;
+
+}
+
+
+/* =========================================
+   CONTAINER
+   ========================================= */
+
+.abc-practical-container {
+
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    0.95fr 1.05fr;
+
+  gap: 80px;
+
+  align-items: center;
+}
+
+
+/* =========================================
+   LEFT CONTENT
+   ========================================= */
+
+.abc-practical-intro {
+  max-width: 520px;
+}
+
+
+/* LABEL */
+
+.abc-section-label {
+
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 4px;
+
+  color: var(--abc-accent);
+
+}
+
+
+/* HEADING */
+
+.abc-practical-intro h2 {
+
+  margin: 0;
+
+  font-size: clamp(38px, 5vw, 64px);
+
+  line-height: 0.98;
+
+  font-weight: 700;
+
+  letter-spacing: -2.5px;
+
+  color: var(--abc-text);
+
+}
+
+
+/* ACCENT HEADING */
+
+.abc-practical-intro h2 span {
+
+  display: block;
+
+  margin-top: 7px;
+
+  color: var(--abc-accent);
+
+  font-style: italic;
+
+  font-weight: 500;
+
+}
+
+
+/* DESCRIPTION */
+
+.abc-practical-description {
+
+  margin-top: 28px;
+
+  max-width: 500px;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+
+  color: var(--abc-muted);
+
+}
+
+
+/* =========================================
+   FEATURES
+   ========================================= */
+
+.abc-practical-features {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 12px;
+
+}
+
+
+/* FEATURE CARD */
+
+.abc-feature {
+
+  min-height: 72px;
+
+  padding: 18px 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  border: 1px solid var(--abc-border);
+
+  border-radius: 18px;
+
+  background: var(--abc-card);
+
+  backdrop-filter: blur(16px);
+
+  -webkit-backdrop-filter: blur(16px);
+
+  color: var(--abc-text);
+
+  font-size: 14px;
+
+  line-height: 1.45;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* HOVER */
+
+.abc-feature:hover {
+
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(192, 90, 165, 0.35);
+
+  background:
+    rgba(192, 90, 165, 0.07);
+}
+
+
+/* =========================================
+   ROTATING STAR
+   ========================================= */
+
+.abc-star {
+
+  flex: 0 0 auto;
+
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+
+  color: var(--abc-accent);
+
+  animation:
+    abcStarRotate 4s linear infinite;
+
+  transform-origin: center;
+}
+
+
+/* DIFFERENT STAR TIMINGS */
+
+.abc-feature:nth-child(2) .abc-star {
+  animation-delay: -0.5s;
+}
+
+.abc-feature:nth-child(3) .abc-star {
+  animation-delay: -1s;
+}
+
+.abc-feature:nth-child(4) .abc-star {
+  animation-delay: -1.5s;
+}
+
+.abc-feature:nth-child(5) .abc-star {
+  animation-delay: -2s;
+}
+
+.abc-feature:nth-child(6) .abc-star {
+  animation-delay: -2.5s;
+}
+
+.abc-feature:nth-child(7) .abc-star {
+  animation-delay: -3s;
+}
+
+.abc-feature:nth-child(8) .abc-star {
+  animation-delay: -3.5s;
+}
+
+
+/* STAR ANIMATION */
+
+@keyframes abcStarRotate {
+
+  0% {
+    transform:
+      rotate(0deg)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      rotate(180deg)
+      scale(1.08);
+  }
+
+  100% {
+    transform:
+      rotate(360deg)
+      scale(1);
+  }
+
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  .abc-practical-section {
+
+    padding: 80px 6%;
+
+  }
+
+  .abc-practical-container {
+
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+
+  }
+
+  .abc-practical-intro {
+
+    max-width: 700px;
+
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .abc-practical-section {
+
+    padding: 65px 20px;
+
+  }
+
+  .abc-practical-container {
+
+    gap: 32px;
+
+  }
+
+  .abc-section-label {
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+  }
+
+  .abc-practical-intro h2 {
+
+    font-size:
+      clamp(36px, 11vw, 48px);
+
+    line-height: 1;
+
+    letter-spacing: -1.8px;
+
+  }
+
+  .abc-practical-description {
+
+    margin-top: 22px;
+
+    font-size: 14px;
+
+    line-height: 1.75;
+
+  }
+
+  .abc-practical-features {
+
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+  }
+
+  .abc-feature {
+
+    min-height: 64px;
+
+    padding: 15px 16px;
+
+    border-radius: 15px;
+
+    font-size: 13.5px;
+
+  }
+
+  .abc-star {
+
+    width: 26px;
+
+    font-size: 19px;
+
+  }
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+   ========================================= */
+
+@media (max-width: 380px) {
+
+  .abc-practical-section {
+
+    padding: 55px 16px;
+
+  }
+
+  .abc-practical-intro h2 {
+
+    font-size: 34px;
+
+  }
+
+  .abc-feature {
+
+    font-size: 13px;
+
+  }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .abc-star {
+
+    animation: none;
+
+  }
+
+  .abc-feature {
+
+    transition: none;
+
+  }
+
+}
