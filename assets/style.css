@@ -5731,3 +5731,478 @@ video {
   }
   .video-card video { object-fit: cover !important; }
 }
+
+
+
+
+
+
+/* ==========================================
+   ABC — WHY CHOOSE ABC
+   EDUCATION PAGE STYLE
+   ========================================== */
+
+.abc-why-section {
+  width: 100%;
+  position: relative;
+  padding: 110px 7%;
+
+  background:
+    radial-gradient(
+      circle at 10% 50%,
+      rgba(161, 70, 142, 0.08),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 90% 30%,
+      rgba(255, 104, 75, 0.05),
+      transparent 30%
+    );
+
+  overflow: hidden;
+}
+
+
+/* ==========================================
+   MAIN CONTAINER
+   ========================================== */
+
+.abc-why-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+
+/* ==========================================
+   HEADING
+   ========================================== */
+
+.abc-why-heading {
+  max-width: 760px;
+}
+
+
+/* SMALL TOP LABEL
+   Same style direction as
+   ABC · POLLACHI / WHY ABC ACADEMY
+*/
+
+.abc-why-kicker {
+
+  margin-bottom: 18px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+  color: #a4478d;
+}
+
+
+/* MAIN HEADING */
+
+.abc-why-heading h2 {
+
+  margin: 0;
+
+  font-size: clamp(
+    42px,
+    6vw,
+    76px
+  );
+
+  line-height: 0.98;
+
+  letter-spacing: -3px;
+
+  font-weight: 700;
+
+  color: var(--text-color, #f4edf5);
+}
+
+
+/* ACCENT LINE */
+
+.abc-why-heading h2 span {
+
+  color: #a4478d;
+
+  font-style: italic;
+
+  font-weight: 500;
+}
+
+
+/* DESCRIPTION */
+
+.abc-why-heading p {
+
+  max-width: 700px;
+
+  margin-top: 30px;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+
+  color: var(
+    --muted-color,
+    #aaa2ae
+  );
+}
+
+
+/* ==========================================
+   FEATURES GRID
+   ========================================== */
+
+.abc-why-features {
+
+  margin-top: 55px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+
+  max-width: 1050px;
+}
+
+
+/* ==========================================
+   FEATURE
+   ========================================== */
+
+.abc-why-item {
+
+  min-height: 70px;
+
+  padding: 17px 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  border: 1px solid
+    rgba(164, 71, 141, 0.16);
+
+  border-radius: 16px;
+
+  background:
+    rgba(164, 71, 141, 0.035);
+
+  color:
+    var(--text-color, #f4edf5);
+
+  font-size: 14px;
+
+  line-height: 1.4;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+
+/* HOVER */
+
+.abc-why-item:hover {
+
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(164, 71, 141, 0.35);
+
+  background:
+    rgba(164, 71, 141, 0.07);
+}
+
+
+/* ==========================================
+   ROTATING STAR
+   ========================================== */
+
+.abc-why-star {
+
+  width: 27px;
+  height: 27px;
+
+  flex: 0 0 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #a4478d;
+
+  font-size: 20px;
+
+  animation:
+    abcWhyStarRotate
+    4s linear infinite;
+}
+
+
+/* STAR ROTATION */
+
+@keyframes abcWhyStarRotate {
+
+  0% {
+    transform:
+      rotate(0deg)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      rotate(180deg)
+      scale(1.12);
+  }
+
+  100% {
+    transform:
+      rotate(360deg)
+      scale(1);
+  }
+
+}
+
+
+/* Different starting positions */
+
+.abc-why-item:nth-child(2)
+.abc-why-star {
+  animation-delay: -0.5s;
+}
+
+.abc-why-item:nth-child(3)
+.abc-why-star {
+  animation-delay: -1s;
+}
+
+.abc-why-item:nth-child(4)
+.abc-why-star {
+  animation-delay: -1.5s;
+}
+
+.abc-why-item:nth-child(5)
+.abc-why-star {
+  animation-delay: -2s;
+}
+
+.abc-why-item:nth-child(6)
+.abc-why-star {
+  animation-delay: -2.5s;
+}
+
+.abc-why-item:nth-child(7)
+.abc-why-star {
+  animation-delay: -3s;
+}
+
+.abc-why-item:nth-child(8)
+.abc-why-star {
+  animation-delay: -3.5s;
+}
+
+
+/* ==========================================
+   LIGHT MODE
+   ========================================== */
+
+body.light .abc-why-section,
+[data-theme="light"] .abc-why-section {
+
+  --text-color: #242026;
+
+  --muted-color: #6e6670;
+
+  background:
+    radial-gradient(
+      circle at 10% 50%,
+      rgba(164, 71, 141, 0.07),
+      transparent 34%
+    ),
+    #faf7fb;
+}
+
+
+/* ==========================================
+   DARK MODE
+   ========================================== */
+
+body.dark .abc-why-section,
+[data-theme="dark"] .abc-why-section {
+
+  --text-color: #f4edf5;
+
+  --muted-color: #aaa2ae;
+
+}
+
+
+/* ==========================================
+   TABLET
+   ========================================== */
+
+@media (max-width: 900px) {
+
+  .abc-why-section {
+
+    padding: 85px 6%;
+
+  }
+
+  .abc-why-heading h2 {
+
+    font-size:
+      clamp(42px, 7vw, 62px);
+
+  }
+
+}
+
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 600px) {
+
+  .abc-why-section {
+
+    padding: 70px 20px;
+
+  }
+
+
+  .abc-why-kicker {
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+
+  }
+
+
+  .abc-why-heading h2 {
+
+    font-size:
+      clamp(38px, 11vw, 52px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+  }
+
+
+  .abc-why-heading p {
+
+    margin-top: 22px;
+
+    font-size: 14px;
+
+    line-height: 1.75;
+
+  }
+
+
+  .abc-why-features {
+
+    margin-top: 38px;
+
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+  }
+
+
+  .abc-why-item {
+
+    min-height: 62px;
+
+    padding: 15px 16px;
+
+    border-radius: 14px;
+
+    font-size: 13.5px;
+
+  }
+
+
+  .abc-why-star {
+
+    width: 25px;
+
+    height: 25px;
+
+    flex-basis: 25px;
+
+    font-size: 18px;
+
+  }
+
+}
+
+
+/* ==========================================
+   SMALL PHONES
+   ========================================== */
+
+@media (max-width: 380px) {
+
+  .abc-why-section {
+
+    padding: 60px 16px;
+
+  }
+
+
+  .abc-why-heading h2 {
+
+    font-size: 35px;
+
+  }
+
+
+  .abc-why-item {
+
+    font-size: 13px;
+
+  }
+
+}
+
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .abc-why-star {
+
+    animation: none;
+
+  }
+
+  .abc-why-item {
+
+    transition: none;
+
+  }
+
+}
