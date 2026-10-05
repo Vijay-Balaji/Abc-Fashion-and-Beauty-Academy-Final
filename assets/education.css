@@ -1307,209 +1307,152 @@
 }
 
 
-/* =========================================
-   ABC ACADEMY — WHY ABC SECTION
-   ========================================= */
+/* ==========================================
+   ABC — WHY CHOOSE ABC
+   EDUCATION PAGE STYLE
+   ========================================== */
 
-.abc-practical-section {
+.abc-why-section {
   width: 100%;
-  padding: 100px 7%;
   position: relative;
-  overflow: hidden;
+  padding: 110px 7%;
 
   background:
     radial-gradient(
       circle at 10% 50%,
-      rgba(150, 62, 132, 0.10),
-      transparent 35%
+      rgba(161, 70, 142, 0.08),
+      transparent 34%
     ),
     radial-gradient(
-      circle at 90% 20%,
-      rgba(255, 104, 75, 0.07),
+      circle at 90% 30%,
+      rgba(255, 104, 75, 0.05),
       transparent 30%
-    ),
-    var(--abc-bg, #0d0c12);
+    );
 
-  color: var(--abc-text, #f2edf5);
-
-  transition:
-    background 0.4s ease,
-    color 0.4s ease;
+  overflow: hidden;
 }
 
 
-/* =========================================
-   DARK MODE
-   ========================================= */
+/* ==========================================
+   MAIN CONTAINER
+   ========================================== */
 
-body.dark .abc-practical-section,
-[data-theme="dark"] .abc-practical-section {
-
-  --abc-bg: #0d0c12;
-  --abc-text: #f2edf5;
-  --abc-muted: #aaa2ae;
-  --abc-card: rgba(255, 255, 255, 0.035);
-  --abc-border: rgba(255, 255, 255, 0.09);
-  --abc-accent: #c05aa5;
-
-}
-
-
-/* =========================================
-   LIGHT MODE
-   ========================================= */
-
-body.light .abc-practical-section,
-[data-theme="light"] .abc-practical-section {
-
-  --abc-bg: #faf7fb;
-  --abc-text: #29232d;
-  --abc-muted: #6d6570;
-  --abc-card: rgba(255, 255, 255, 0.72);
-  --abc-border: rgba(120, 70, 115, 0.15);
-  --abc-accent: #a4478d;
-
-}
-
-
-/* =========================================
-   DEFAULT VARIABLES
-   ========================================= */
-
-.abc-practical-section {
-
-  --abc-muted: #aaa2ae;
-  --abc-card: rgba(255, 255, 255, 0.035);
-  --abc-border: rgba(255, 255, 255, 0.09);
-  --abc-accent: #c05aa5;
-
-}
-
-
-/* =========================================
-   CONTAINER
-   ========================================= */
-
-.abc-practical-container {
-
-  max-width: 1200px;
+.abc-why-inner {
+  width: min(1180px, 100%);
   margin: 0 auto;
-
-  display: grid;
-
-  grid-template-columns:
-    0.95fr 1.05fr;
-
-  gap: 80px;
-
-  align-items: center;
 }
 
 
-/* =========================================
-   LEFT CONTENT
-   ========================================= */
+/* ==========================================
+   HEADING
+   ========================================== */
 
-.abc-practical-intro {
-  max-width: 520px;
+.abc-why-heading {
+  max-width: 760px;
 }
 
 
-/* LABEL */
+/* SMALL TOP LABEL
+   Same style direction as
+   ABC · POLLACHI / WHY ABC ACADEMY
+*/
 
-.abc-section-label {
-
-  display: inline-block;
+.abc-why-kicker {
 
   margin-bottom: 18px;
 
   font-size: 11px;
-
   font-weight: 700;
 
   letter-spacing: 4px;
 
-  color: var(--abc-accent);
+  text-transform: uppercase;
 
+  color: #a4478d;
 }
 
 
-/* HEADING */
+/* MAIN HEADING */
 
-.abc-practical-intro h2 {
+.abc-why-heading h2 {
 
   margin: 0;
 
-  font-size: clamp(38px, 5vw, 64px);
+  font-size: clamp(
+    42px,
+    6vw,
+    76px
+  );
 
   line-height: 0.98;
 
+  letter-spacing: -3px;
+
   font-weight: 700;
 
-  letter-spacing: -2.5px;
-
-  color: var(--abc-text);
-
+  color: var(--text-color, #f4edf5);
 }
 
 
-/* ACCENT HEADING */
+/* ACCENT LINE */
 
-.abc-practical-intro h2 span {
+.abc-why-heading h2 span {
 
-  display: block;
-
-  margin-top: 7px;
-
-  color: var(--abc-accent);
+  color: #a4478d;
 
   font-style: italic;
 
   font-weight: 500;
-
 }
 
 
 /* DESCRIPTION */
 
-.abc-practical-description {
+.abc-why-heading p {
 
-  margin-top: 28px;
+  max-width: 700px;
 
-  max-width: 500px;
+  margin-top: 30px;
 
   font-size: 15px;
 
   line-height: 1.8;
 
-  color: var(--abc-muted);
-
+  color: var(
+    --muted-color,
+    #aaa2ae
+  );
 }
 
 
-/* =========================================
-   FEATURES
-   ========================================= */
+/* ==========================================
+   FEATURES GRID
+   ========================================== */
 
-.abc-practical-features {
+.abc-why-features {
+
+  margin-top: 55px;
 
   display: grid;
 
   grid-template-columns:
-    repeat(2, 1fr);
+    repeat(2, minmax(0, 1fr));
 
-  gap: 12px;
+  gap: 14px;
 
+  max-width: 1050px;
 }
 
 
-/* FEATURE CARD */
+/* ==========================================
+   FEATURE
+   ========================================== */
 
-.abc-feature {
+.abc-why-item {
 
-  min-height: 72px;
+  min-height: 70px;
 
-  padding: 18px 20px;
+  padding: 17px 20px;
 
   display: flex;
 
@@ -1517,21 +1460,20 @@ body.light .abc-practical-section,
 
   gap: 14px;
 
-  border: 1px solid var(--abc-border);
+  border: 1px solid
+    rgba(164, 71, 141, 0.16);
 
-  border-radius: 18px;
+  border-radius: 16px;
 
-  background: var(--abc-card);
+  background:
+    rgba(164, 71, 141, 0.035);
 
-  backdrop-filter: blur(16px);
-
-  -webkit-backdrop-filter: blur(16px);
-
-  color: var(--abc-text);
+  color:
+    var(--text-color, #f4edf5);
 
   font-size: 14px;
 
-  line-height: 1.45;
+  line-height: 1.4;
 
   transition:
     transform 0.3s ease,
@@ -1542,79 +1484,47 @@ body.light .abc-practical-section,
 
 /* HOVER */
 
-.abc-feature:hover {
+.abc-why-item:hover {
 
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 
   border-color:
-    rgba(192, 90, 165, 0.35);
+    rgba(164, 71, 141, 0.35);
 
   background:
-    rgba(192, 90, 165, 0.07);
+    rgba(164, 71, 141, 0.07);
 }
 
 
-/* =========================================
+/* ==========================================
    ROTATING STAR
-   ========================================= */
+   ========================================== */
 
-.abc-star {
+.abc-why-star {
 
-  flex: 0 0 auto;
+  width: 27px;
+  height: 27px;
 
-  width: 28px;
-  height: 28px;
+  flex: 0 0 27px;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
+  color: #a4478d;
+
   font-size: 20px;
 
-  color: var(--abc-accent);
-
   animation:
-    abcStarRotate 4s linear infinite;
-
-  transform-origin: center;
+    abcWhyStarRotate
+    4s linear infinite;
 }
 
 
-/* DIFFERENT STAR TIMINGS */
+/* STAR ROTATION */
 
-.abc-feature:nth-child(2) .abc-star {
-  animation-delay: -0.5s;
-}
-
-.abc-feature:nth-child(3) .abc-star {
-  animation-delay: -1s;
-}
-
-.abc-feature:nth-child(4) .abc-star {
-  animation-delay: -1.5s;
-}
-
-.abc-feature:nth-child(5) .abc-star {
-  animation-delay: -2s;
-}
-
-.abc-feature:nth-child(6) .abc-star {
-  animation-delay: -2.5s;
-}
-
-.abc-feature:nth-child(7) .abc-star {
-  animation-delay: -3s;
-}
-
-.abc-feature:nth-child(8) .abc-star {
-  animation-delay: -3.5s;
-}
-
-
-/* STAR ANIMATION */
-
-@keyframes abcStarRotate {
+@keyframes abcWhyStarRotate {
 
   0% {
     transform:
@@ -1625,7 +1535,7 @@ body.light .abc-practical-section,
   50% {
     transform:
       rotate(180deg)
-      scale(1.08);
+      scale(1.12);
   }
 
   100% {
@@ -1637,73 +1547,138 @@ body.light .abc-practical-section,
 }
 
 
-/* =========================================
+/* Different starting positions */
+
+.abc-why-item:nth-child(2)
+.abc-why-star {
+  animation-delay: -0.5s;
+}
+
+.abc-why-item:nth-child(3)
+.abc-why-star {
+  animation-delay: -1s;
+}
+
+.abc-why-item:nth-child(4)
+.abc-why-star {
+  animation-delay: -1.5s;
+}
+
+.abc-why-item:nth-child(5)
+.abc-why-star {
+  animation-delay: -2s;
+}
+
+.abc-why-item:nth-child(6)
+.abc-why-star {
+  animation-delay: -2.5s;
+}
+
+.abc-why-item:nth-child(7)
+.abc-why-star {
+  animation-delay: -3s;
+}
+
+.abc-why-item:nth-child(8)
+.abc-why-star {
+  animation-delay: -3.5s;
+}
+
+
+/* ==========================================
+   LIGHT MODE
+   ========================================== */
+
+body.light .abc-why-section,
+[data-theme="light"] .abc-why-section {
+
+  --text-color: #242026;
+
+  --muted-color: #6e6670;
+
+  background:
+    radial-gradient(
+      circle at 10% 50%,
+      rgba(164, 71, 141, 0.07),
+      transparent 34%
+    ),
+    #faf7fb;
+}
+
+
+/* ==========================================
+   DARK MODE
+   ========================================== */
+
+body.dark .abc-why-section,
+[data-theme="dark"] .abc-why-section {
+
+  --text-color: #f4edf5;
+
+  --muted-color: #aaa2ae;
+
+}
+
+
+/* ==========================================
    TABLET
-   ========================================= */
+   ========================================== */
 
 @media (max-width: 900px) {
 
-  .abc-practical-section {
+  .abc-why-section {
 
-    padding: 80px 6%;
-
-  }
-
-  .abc-practical-container {
-
-    grid-template-columns: 1fr;
-
-    gap: 45px;
+    padding: 85px 6%;
 
   }
 
-  .abc-practical-intro {
+  .abc-why-heading h2 {
 
-    max-width: 700px;
+    font-size:
+      clamp(42px, 7vw, 62px);
 
   }
 
 }
 
 
-/* =========================================
+/* ==========================================
    MOBILE
-   ========================================= */
+   ========================================== */
 
 @media (max-width: 600px) {
 
-  .abc-practical-section {
+  .abc-why-section {
 
-    padding: 65px 20px;
-
-  }
-
-  .abc-practical-container {
-
-    gap: 32px;
+    padding: 70px 20px;
 
   }
 
-  .abc-section-label {
+
+  .abc-why-kicker {
 
     font-size: 9px;
 
     letter-spacing: 3px;
 
+    margin-bottom: 15px;
+
   }
 
-  .abc-practical-intro h2 {
+
+  .abc-why-heading h2 {
 
     font-size:
-      clamp(36px, 11vw, 48px);
+      clamp(38px, 11vw, 52px);
 
     line-height: 1;
 
-    letter-spacing: -1.8px;
+    letter-spacing: -2px;
 
   }
 
-  .abc-practical-description {
+
+  .abc-why-heading p {
 
     margin-top: 22px;
 
@@ -1713,7 +1688,10 @@ body.light .abc-practical-section,
 
   }
 
-  .abc-practical-features {
+
+  .abc-why-features {
+
+    margin-top: 38px;
 
     grid-template-columns: 1fr;
 
@@ -1721,48 +1699,56 @@ body.light .abc-practical-section,
 
   }
 
-  .abc-feature {
 
-    min-height: 64px;
+  .abc-why-item {
+
+    min-height: 62px;
 
     padding: 15px 16px;
 
-    border-radius: 15px;
+    border-radius: 14px;
 
     font-size: 13.5px;
 
   }
 
-  .abc-star {
 
-    width: 26px;
+  .abc-why-star {
 
-    font-size: 19px;
+    width: 25px;
+
+    height: 25px;
+
+    flex-basis: 25px;
+
+    font-size: 18px;
 
   }
 
 }
 
 
-/* =========================================
+/* ==========================================
    SMALL PHONES
-   ========================================= */
+   ========================================== */
 
 @media (max-width: 380px) {
 
-  .abc-practical-section {
+  .abc-why-section {
 
-    padding: 55px 16px;
-
-  }
-
-  .abc-practical-intro h2 {
-
-    font-size: 34px;
+    padding: 60px 16px;
 
   }
 
-  .abc-feature {
+
+  .abc-why-heading h2 {
+
+    font-size: 35px;
+
+  }
+
+
+  .abc-why-item {
 
     font-size: 13px;
 
@@ -1771,19 +1757,19 @@ body.light .abc-practical-section,
 }
 
 
-/* =========================================
-   REDUCED MOTION
-   ========================================= */
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
-  .abc-star {
+  .abc-why-star {
 
     animation: none;
 
   }
 
-  .abc-feature {
+  .abc-why-item {
 
     transition: none;
 
