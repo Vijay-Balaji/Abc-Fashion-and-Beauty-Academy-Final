@@ -5736,113 +5736,71 @@ video {
 
 
 /* ==========================================
-   ABC — WHY ABC ACADEMY
-   CLEAN EDITORIAL STYLE
-   ========================================== */
-
-.abc-why-section {
-  width: 100%;
-  padding: 105px 7%;
-  position: relative;
-  overflow: hidden;
-}
-
-.abc-why-inner {
-  width: min(1180px, 100%);
-  margin: 0 auto;
-}
-
-
-/* ==========================================
-   HEADING
-   ========================================== */
-
-.abc-why-heading {
-  max-width: 850px;
-}
-
-.abc-why-kicker {
-  margin-bottom: 18px;
-
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-
-  color: #a4478d;
-}
-
-.abc-why-heading h2 {
-  margin: 0;
-
-  font-size: clamp(46px, 6vw, 76px);
-  line-height: 0.98;
-  letter-spacing: -3px;
-  font-weight: 800;
-
-  color: var(--text-color, #242026);
-}
-
-.abc-why-heading h2 span {
-  color: #a4478d;
-  font-style: italic;
-  font-weight: 600;
-}
-
-
-/* ==========================================
-   STAR POINTS
+   ABC WHY — RESPONSIVE 2-COLUMN GRID
    ========================================== */
 
 .abc-why-points {
+  width: 100%;
+  max-width: 1050px;
+
   margin-top: 55px;
 
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 
-  column-gap: 80px;
-  row-gap: 24px;
-
-  max-width: 1000px;
+  column-gap: 70px;
+  row-gap: 26px;
 }
 
+
+/* FEATURE */
+
 .abc-why-point {
-  display: flex;
+  width: 100%;
+  min-width: 0;
+
+  display: flex !important;
   align-items: center;
 
-  gap: 15px;
+  gap: 12px;
 
   min-height: 42px;
 
+  margin: 0;
+  padding: 0;
+
   font-size: 15px;
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1.4;
 
   color: var(--text-color, #242026);
 }
 
 
-/* ==========================================
-   ROTATING STAR
-   ========================================== */
+/* STAR */
 
 .abc-why-star {
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
 
-  flex: 0 0 25px;
+  min-width: 24px;
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
   color: #a4478d;
 
-  font-size: 19px;
+  font-size: 18px;
   line-height: 1;
 
   animation: abcWhyStarRotate 4s linear infinite;
 }
+
+
+/* ==========================================
+   STAR ROTATION
+   ========================================== */
 
 @keyframes abcWhyStarRotate {
 
@@ -5861,7 +5819,9 @@ video {
 }
 
 
-/* Stagger the stars */
+/* ==========================================
+   STAGGERED STAR ANIMATION
+   ========================================== */
 
 .abc-why-point:nth-child(2) .abc-why-star {
   animation-delay: -0.5s;
@@ -5893,99 +5853,54 @@ video {
 
 
 /* ==========================================
-   DARK MODE
-   ========================================== */
-
-body.dark .abc-why-heading h2,
-body.dark .abc-why-point,
-[data-theme="dark"] .abc-why-heading h2,
-[data-theme="dark"] .abc-why-point {
-  --text-color: #f4edf5;
-}
-
-
-/* ==========================================
-   LIGHT MODE
-   ========================================== */
-
-body.light .abc-why-heading h2,
-body.light .abc-why-point,
-[data-theme="light"] .abc-why-heading h2,
-[data-theme="light"] .abc-why-point {
-  --text-color: #242026;
-}
-
-
-/* ==========================================
    TABLET
    ========================================== */
 
 @media (max-width: 900px) {
 
-  .abc-why-section {
-    padding: 85px 6%;
-  }
-
-  .abc-why-heading h2 {
-    font-size: clamp(44px, 7vw, 62px);
-  }
-
   .abc-why-points {
-    column-gap: 45px;
-    row-gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    column-gap: 40px;
+    row-gap: 22px;
   }
 
 }
 
 
 /* ==========================================
-   MOBILE
+   MOBILE — STILL 2 COLUMNS
    ========================================== */
 
 @media (max-width: 600px) {
 
-  .abc-why-section {
-    padding: 70px 20px;
-  }
-
-  .abc-why-kicker {
-    margin-bottom: 15px;
-
-    font-size: 9px;
-    letter-spacing: 3px;
-  }
-
-  .abc-why-heading h2 {
-    font-size: clamp(38px, 11vw, 52px);
-
-    line-height: 1;
-    letter-spacing: -2px;
-  }
-
   .abc-why-points {
-    margin-top: 40px;
+    width: 100%;
 
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 
-    gap: 18px;
+    column-gap: 18px;
+    row-gap: 20px;
+
+    margin-top: 38px;
   }
 
   .abc-why-point {
-    min-height: 34px;
+    gap: 8px;
 
-    gap: 13px;
+    min-height: 38px;
 
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.35;
   }
 
   .abc-why-star {
-    width: 23px;
-    height: 23px;
+    width: 18px;
+    height: 18px;
 
-    flex-basis: 23px;
+    min-width: 18px;
 
-    font-size: 17px;
+    font-size: 14px;
   }
 
 }
@@ -5997,29 +5912,23 @@ body.light .abc-why-point,
 
 @media (max-width: 380px) {
 
-  .abc-why-section {
-    padding: 60px 16px;
-  }
-
-  .abc-why-heading h2 {
-    font-size: 35px;
+  .abc-why-points {
+    column-gap: 12px;
+    row-gap: 18px;
   }
 
   .abc-why-point {
-    font-size: 13px;
+    gap: 6px;
+    font-size: 11px;
   }
 
-}
-
-
-/* ==========================================
-   ACCESSIBILITY
-   ========================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
   .abc-why-star {
-    animation: none;
+    width: 16px;
+    height: 16px;
+
+    min-width: 16px;
+
+    font-size: 13px;
   }
 
 }
