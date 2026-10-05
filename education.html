@@ -168,26 +168,30 @@
             </div>
         </section>
 
-<!-- ABC ACADEMY — WHY ABC SECTION -->
+<!-- ==============================
+     WHY CHOOSE ABC
+     ============================== -->
 
-<section class="abc-practical-section" id="why-abc">
+<section class="abc-why-section" id="why-choose-abc">
 
-  <div class="abc-practical-container">
+  <div class="abc-why-inner">
 
-    <!-- LEFT CONTENT -->
-    <div class="abc-practical-intro">
+    <!-- SECTION HEADING -->
+    <div class="abc-why-heading">
 
-      <span class="abc-section-label">
-        WHY ABC ACADEMY
-      </span>
+      <div class="abc-why-kicker">
+        ABC · POLLACHI
+      </div>
 
       <h2>
         Practical Education.
+        <br>
         <span>Professional Skills.</span>
+        <br>
         Creative Careers.
       </h2>
 
-      <p class="abc-practical-description">
+      <p>
         ABC Fashion & Beauty Academy provides practical,
         industry-focused education for aspiring Makeup Artists,
         Beauticians, Fashion & Costume Designers, Tailors,
@@ -197,46 +201,46 @@
     </div>
 
 
-    <!-- RIGHT FEATURES -->
-    <div class="abc-practical-features">
+    <!-- FEATURES -->
+    <div class="abc-why-features">
 
-      <div class="abc-feature">
-        <span class="abc-star">✦</span>
+      <div class="abc-why-item">
+        <span class="abc-why-star">✦</span>
         <span>Hands-on, practical training</span>
       </div>
 
-      <div class="abc-feature">
-        <span class="abc-star">✦</span>
+      <div class="abc-why-item">
+        <span class="abc-why-star">✦</span>
         <span>Beginner-friendly professional guidance</span>
       </div>
 
-      <div class="abc-feature">
-        <span class="abc-star">✦</span>
+      <div class="abc-why-item">
+        <span class="abc-why-star">✦</span>
         <span>Comprehensive courses under one roof</span>
       </div>
 
-      <div class="abc-feature">
-        <span class="abc-star">✦</span>
+      <div class="abc-why-item">
+        <span class="abc-why-star">✦</span>
         <span>Real-world garment & beauty practice</span>
       </div>
 
-      <div class="abc-feature">
-        <span class="abc-star">✦</span>
+      <div class="abc-why-item">
+        <span class="abc-why-star">✦</span>
         <span>Personalised learning support</span>
       </div>
 
-      <div class="abc-feature">
-        <span class="abc-star">✦</span>
+      <div class="abc-why-item">
+        <span class="abc-why-star">✦</span>
         <span>Certificate upon course completion</span>
       </div>
 
-      <div class="abc-feature">
-        <span class="abc-star">✦</span>
+      <div class="abc-why-item">
+        <span class="abc-why-star">✦</span>
         <span>Guidance for freelance & independent careers</span>
       </div>
 
-      <div class="abc-feature">
-        <span class="abc-star">✦</span>
+      <div class="abc-why-item">
+        <span class="abc-why-star">✦</span>
         <span>Trusted local academy in Pollachi</span>
       </div>
 
@@ -1857,8 +1861,101 @@
 
         });
     </script>
-                    
+                    <script>/* =========================================
+   ABC ACADEMY — WHY ABC SECTION
+   DARK / LIGHT MODE SUPPORT
+   ========================================= */
 
+(function () {
+
+  const section = document.querySelector(
+    ".abc-practical-section"
+  );
+
+  if (!section) return;
+
+
+  /*
+   * Detect the existing website theme.
+   *
+   * Supports:
+   * body.dark
+   * body.light
+   * [data-theme="dark"]
+   * [data-theme="light"]
+   */
+
+  function updateABCTheme() {
+
+    const body = document.body;
+
+    const isDark =
+      body.classList.contains("dark") ||
+      body.getAttribute("data-theme") === "dark" ||
+      document.documentElement.getAttribute("data-theme") === "dark";
+
+    const isLight =
+      body.classList.contains("light") ||
+      body.getAttribute("data-theme") === "light" ||
+      document.documentElement.getAttribute("data-theme") === "light";
+
+
+    if (isDark) {
+
+      section.setAttribute(
+        "data-abc-theme",
+        "dark"
+      );
+
+    } else if (isLight) {
+
+      section.setAttribute(
+        "data-abc-theme",
+        "light"
+      );
+
+    }
+
+  }
+
+
+  /* Initial theme */
+
+  updateABCTheme();
+
+
+  /*
+   * Watch for changes made by
+   * your existing dark/light mode button.
+   */
+
+  const observer = new MutationObserver(
+    function () {
+      updateABCTheme();
+    }
+  );
+
+
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: [
+      "class",
+      "data-theme"
+    ]
+  });
+
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: [
+      "class",
+      "data-theme"
+    ]
+  });
+
+
+})();</script>
+                    
 </body>
 
 </html>
