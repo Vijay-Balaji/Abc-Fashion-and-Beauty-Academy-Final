@@ -4930,7 +4930,7 @@ body.light .abc-blouse-section {
   .abc-blouse-section{padding:34px 20px;}
   .abc-blouse-heading{font-size:clamp(38px,12vw,48px);}
   .abc-blouse-intro{font-size:13px;}
-  .abc-blouse-list{row-gap:8px;}
+  .abc-blouse-list{row-gap:4px;}
   .abc-blouse-item{white-space:normal;height:auto;min-height:20px;line-height:1.45;font-size:12px;}
 }
 
